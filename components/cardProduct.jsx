@@ -6,13 +6,12 @@ export const CardProduct = (props) => {
   const [product, setProduct] = useState();
   useEffect(() => {
     setProduct(props.props);
-  }, []);
-  console.log(product);
+  }, [props]);
 
   if (product != null) {
     return (
       <div>
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${product.id}`} passHref>
           <div className="card-product rounded shadow">
             <div className="card-product-image">
               <Image
@@ -21,6 +20,7 @@ export const CardProduct = (props) => {
                 layout="fill"
                 objectFit="contain"
                 className="bg-secondary py-1"
+                alt={product.name}
               />
             </div>
             <div className="card">

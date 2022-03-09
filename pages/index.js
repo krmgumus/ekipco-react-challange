@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { CardCategory } from '../components/cardCategory';
 import { BootstrapCarousel } from '../components/carousel';
@@ -33,12 +34,15 @@ export default function Home() {
   }, [sliders]);
   return (
     <div>
+      <Head>
+        <title>EkipCo React Challange</title>
+      </Head>
       <Navbar />
       {products.length > 0 && <BootstrapCarousel items={products} />}
       {categories.length > 0 && (
         <div className="row mt-4 px-4">
           {categories.map((item, index) => (
-            <div className="col-4">
+            <div key={index} className="col-4">
               <CardCategory key={index} id={item.id} name={item.name} description={item.description} />
             </div>
           ))}

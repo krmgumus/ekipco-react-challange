@@ -10,7 +10,7 @@ export const BootstrapCarousel = (props) => {
       <Carousel className="col-lg mx-auto" nextLabel="" prevLabel="">
         {items.map((item, index) => (
           <Carousel.Item className="" key={index}>
-            <Link href={`product/${item.id}`}>
+            <Link href={`product/${item.id}`} passHref>
               <div>
                 <div className="d-block position-relative carousel-image ">
                   <Image
@@ -19,6 +19,7 @@ export const BootstrapCarousel = (props) => {
                     layout="fill"
                     objectFit="contain"
                     className="carousel-next-image"
+                    alt={item.name}
                   />
                 </div>
                 <Carousel.Caption className="text-black">
