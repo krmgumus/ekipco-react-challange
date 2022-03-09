@@ -6,7 +6,7 @@ export const BootstrapCarousel = (props) => {
   const items = props.items;
 
   return (
-    <div className="bg-dark row">
+    <div className="bg-dark row mx-auto">
       <Carousel className="col-lg mx-auto" nextLabel="" prevLabel="">
         {items.map((item, index) => (
           <Carousel.Item className="" key={index}>

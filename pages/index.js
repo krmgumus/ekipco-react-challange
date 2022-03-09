@@ -38,16 +38,18 @@ export default function Home() {
         <title>EkipCo React Challange</title>
       </Head>
       <Navbar />
-      {products.length > 0 && <BootstrapCarousel items={products} />}
-      {categories.length > 0 && (
-        <div className="row mt-4 px-4">
-          {categories.map((item, index) => (
-            <div key={index} className="col-4">
-              <CardCategory key={index} id={item.id} name={item.name} description={item.description} />
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="container-xl">
+        {products.length > 0 && <BootstrapCarousel items={products} />}
+        {categories.length > 0 && (
+          <div className="row mt-4 px-4 mx-auto justify-content-center justify-md-center ">
+            {categories.map((item, index) => (
+              <div key={index} className="col col-md-4">
+                <CardCategory key={index} id={item.id} name={item.name} description={item.description} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

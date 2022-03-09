@@ -37,7 +37,7 @@ export default function Product() {
       </Head>
       <Navbar />
       {product && (
-        <div>
+        <div className="container mt-2">
           <div className="row justify-center">
             <div className="product-container col-md">
               <div className="product-image border">
