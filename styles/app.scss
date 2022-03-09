@@ -1,1 +1,81 @@
 @import '~bootstrap/scss/bootstrap';
+
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
+
+.header {
+  padding-bottom: 0;
+  background-color: red;
+}
+
+.carousel-image {
+  background-color: black;
+  width: 100%;
+  height: 200px;
+}
+
+.carousel-next-image {
+  opacity: 0.5;
+}
+
+.container {
+  max-width: $lg;
+  flex: auto;
+  flex-direction: row;
+}
+
+.product-image {
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.product-card-text-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.card-product {
+  width: 280px;
+  cursor: pointer;
+}
+
+.card-product-image {
+  width: 100%;
+  height: 160px;
+  position: relative;
+}
+.card-product-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-product-info {
+  width: 5rem;
+  height: 2rem;
+  background-color: #4f46e5;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+  padding-top: 0.25rem;
+  color: white;
+}
+
+/* @media screen and (max-width: $sm) {
+}
+@media screen and (max-width: $md) {
+}
+@media screen and (max-width: $lg) {
+}
+@media screen and (max-width: $xl) {
+}
+@media screen and (max-width: $xxl) {
+}
+ */
