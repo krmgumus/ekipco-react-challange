@@ -8,6 +8,10 @@ export async function getProduct(id) {
   const { data } = await axiosClient.get(`products/${id}`);
   return data;
 }
+export async function getProducts(id) {
+  const { data } = await axiosClient.get(`categories/${id}/products`);
+  return data;
+}
 export async function getCategories() {
   const { data } = await axiosClient.get(`categories`);
   return data;
