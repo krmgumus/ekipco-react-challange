@@ -1,19 +1,27 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Navbar } from '../../components/navbar';
-import { getProduct, getProductsId } from '../../helpers/axios-api-client';
+import { addToFavorite, getProduct } from '../../helpers/axios-api-client';
 
 export default function Product() {
   const router = useRouter();
   const [product, setProduct] = useState();
   const [moreText, setMoreText] = useState(false);
   const [moreTextSwitch, setMoreTextSwitch] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const addFavoriteList = (id) => {
+    addToFavorite(id);
+    router.reload();
+  };
 
   useEffect(() => {
     const fetcData = async () => {
       const product = await getProduct(`${router.query.id}`);
       setProduct(product);
+      setButtonDisabled(product.isFavorite);
       if (product.description.length < 220) {
         setMoreTextSwitch(false);
       }
@@ -22,16 +30,23 @@ export default function Product() {
       fetcData();
     }
   }, [router]);
-  console.log(product);
   return (
     <div>
+      <Head>
+        <title>{product && product.name}</title>
+      </Head>
       <Navbar />
       {product && (
         <div>
           <div className="row justify-center">
             <div className="product-container col-md">
               <div className="product-image border">
-                <Image src={`http://localhost:3000/${product.productImage}`} layout="fill" objectFit="contain" />
+                <Image
+                  src={`http://localhost:3000/${product.productImage}`}
+                  layout="fill"
+                  objectFit="contain"
+                  alt={product.name}
+                />
               </div>
             </div>
             <div className="col-md w-100">
@@ -49,7 +64,18 @@ export default function Product() {
                       {moreText ? 'Kapat' : 'Devamını oku'}
                     </p>
                   ) : null}
-                  <button className="card-link bg-primary text-white border-0 ">Favorilere ekle</button>
+                  <div className="d-flex justify-content-around">
+                    <button
+                      onClick={() => {
+                        addFavoriteList(product.id);
+                      }}
+                      disabled={buttonDisabled}
+                      className={`btn bg-primary text-white border-0 ${buttonDisabled ? 'disabled' : null}`}
+                    >
+                      {buttonDisabled ? 'Favorilere eklendi' : 'Favorilere ekle'}
+                    </button>
+                    <div className="card-product-info text-center rounded-lg mx-auto mb-2">{product.price + ' ₺'}</div>
+                  </div>
                 </div>
               </div>
             </div>

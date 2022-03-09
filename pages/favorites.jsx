@@ -22,10 +22,11 @@ export default function Favorites() {
 
       <Navbar />
       <div className="container">
+        <h2>Favorilerim</h2>
         <div className="row mx-auto justify-content-center justify-md-center">
           {favorites.length > 0 &&
             favorites.map((item, index) => (
-              <div>
+              <div key={index}>
                 <div className="col col-md-4 my-2">
                   <CardProduct key={index} props={item} />
                 </div>

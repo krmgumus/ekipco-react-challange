@@ -27,7 +27,7 @@ export async function getFavorites() {
   return data;
 }
 
-export async function addToFavorite() {
-  const { data } = await axiosClient.post(`favorites`);
+export async function addToFavorite(id) {
+  const { data } = await axiosClient.post(`favorites`, { productId: id });
   return data;
 }
